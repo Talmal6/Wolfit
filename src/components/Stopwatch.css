@@ -1,0 +1,125 @@
+/* Stopwatch.css */
+.stopwatch {
+  width: 90%;
+  max-width: 650px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 4px solid #333;
+  border-radius: 15px;
+  background: radial-gradient(circle at top left, #403261, #403261);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.display {
+  font-size: 64px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.display span {
+  display: inline-block;
+  min-width: 40px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn.start {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn.start:hover {
+  background-color: #218838;
+}
+
+.btn.stop {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn.stop:hover {
+  background-color: #c82333;
+}
+
+.btn.reset {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.btn.reset:hover {
+  background-color: #e0a800;
+}
+
+.participants {
+  display: flex;
+  justify-content: center; /* Centers the child horizontally */
+}
+
+.name-box {
+  font-size: 16px;
+  color: #ebe2e2;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+  .stopwatch {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .display {
+    font-size: 48px;
+  }
+
+  .btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stopwatch {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .display {
+    font-size: 36px;
+  }
+
+  .btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
