@@ -1,12 +1,9 @@
 import { Player } from "./player";
 
 export class Accounts {
-    Accounts: Map<string, Player>;
+    Accounts: Map<string, Player> = new Map<string, Player>();
 
     constructor() {
-        this.Accounts = new Map<string, Player>();
+        // Initialization logic if needed
     }
-
-
-    
 }

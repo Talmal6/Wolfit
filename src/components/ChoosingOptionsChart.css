@@ -1,0 +1,55 @@
+/* Styling for the container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Styling for the title */
+  .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling the options in a column layout */
+  .options-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Styling for each option box */
+  .option-box {
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #363333;
+  }
+  
+  .option-box:hover {
+    background-color: #1d2f31;
+  }
+  
+  /* Styling for the selected option */
+  .selected {
+    background-color: #1d2f31;
+    border-color: #0b1816;
+  }
+  
+  /* Styling for the details section */
+  .details {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #00796b;
+    border-radius: 8px;
+    background-color: #e0f7fa;
+    width: 250px;
+    text-align: center;
+  }
+  

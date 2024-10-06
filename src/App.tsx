@@ -1,6 +1,7 @@
 
 
 import OptionsChooser from './components/OptionsChooser'
+import AdminOption from './components/AdminOption'
 
 import './App.css'
 
@@ -9,12 +10,15 @@ function App() {
 
   return (
     <>
-      <header>      
+      <header>   
         <p className="header">
-          Wolfit
+          <img src="\public\Wolfit.webp"  />
         </p>
+
+
       </header>
       <OptionsChooser/>
+      
     </>
   )
 }
