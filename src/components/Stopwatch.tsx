@@ -1,7 +1,6 @@
-// Stopwatch.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import './Stopwatch.css';
-import { ClimbGame } from '../BackEnd/Games/ClimbGame';
+import { startGameAPI } from '../api/gameApi'; // Import the API function
 
 interface StopwatchProps {
   names: string[];
@@ -11,20 +10,15 @@ const Stopwatch: React.FC<StopwatchProps> = ({ names }) => {
   const [time, setTime] = useState<number>(0); // Time in milliseconds
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const intervalRef = useRef<number | null>(null);
-  const [game, setGame] = useState<ClimbGame | null>(null);
   const [playerTimes, setPlayerTimes] = useState<Map<string, number>>(new Map());
 
-  // Start the stopwatch and game
+  // Start the stopwatch
   const start = () => {
     if (!isRunning) {
-      const newGame = new ClimbGame(names);
-      newGame.startGame();
-      setGame(newGame);
-
       setIsRunning(true);
       intervalRef.current = window.setInterval(() => {
-        setTime(newGame.getTime());
-      }, 10); // Update every 10 milliseconds
+        setTime((prevTime) => prevTime + 10);
+      }, 10);
     }
   };
 
@@ -42,17 +36,15 @@ const Stopwatch: React.FC<StopwatchProps> = ({ names }) => {
   const reset = () => {
     stop();
     setTime(0);
-    setGame(null);
     setPlayerTimes(new Map());
   };
 
   // Handle when a player finishes
   const handlePlayerFinish = (playerName: string) => {
-    if (game) {
-      game.recordPlayerFinish(playerName);
-      // Update player times state
+    if (isRunning) {
+      stop();
       const newPlayerTimes = new Map(playerTimes);
-      newPlayerTimes.set(playerName, game.playersTime.get(game.players.find(p => p.name === playerName)!)!);
+      newPlayerTimes.set(playerName, time);
       setPlayerTimes(newPlayerTimes);
     }
   };

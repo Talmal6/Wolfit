@@ -1,0 +1,6 @@
+@echo off
+echo Starting Backend...
+start cmd /k "cd backend && npx ts-node src/API/server.ts"
+
+echo Starting Frontend...
+start cmd /k "cd frontend/wolfit && npm run dev"

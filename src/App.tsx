@@ -1,6 +1,7 @@
 
 
 import OptionsChooser from './components/OptionsChooser'
+
 import AdminOption from './components/AdminOption'
 
 import './App.css'
@@ -10,15 +11,14 @@ function App() {
 
   return (
     <>
-      <header>   
+      <header>
         <p className="header">
-          <img src="\public\Wolfit.webp"  />
+          <button className="devices" onClick={() => alert("hello")}>מכשירים מחוברים</button>
+          <br />
+          <img src="\public\Wolfit.webp" />
         </p>
-
-
       </header>
-      <OptionsChooser/>
-      
+      <OptionsChooser />
     </>
   )
 }

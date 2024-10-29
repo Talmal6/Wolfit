@@ -1,14 +1,10 @@
-export class BluetoothButton {
-    buttonSignal: string;
+import { Device } from "./Device";
+
+export class BluetoothButton  extends Device{
     
-    constructor(buttonSignal: string) {
-      this.buttonSignal = buttonSignal;
+    constructor(name: string) {
+      super(name);      
     }
-
-    getSignal(): string {
-        return this.buttonSignal;
-    }
-
 
 
   }

@@ -4,5 +4,23 @@
     width: 150px; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
 
-  
+
+}
+
+/* This will style the button to be fixed on the left side of the screen */
+.devices {
+    position: fixed; /* Fixes the button's position relative to the viewport */
+    left: 10px;      /* Places it 10px from the left edge */
+    transform: translateY(-50%); /* Adjusts for exact centering */
+    padding: 10px 20px; /* Adds some padding around the button */
+    background-color: #007BFF; /* Button background color */
+    color: white;    /* Text color */
+    border: none;    /* Removes border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    font-size: 16px; /* Adjusts font size */
+}
+
+.devices:hover {
+    background-color: #0056b3; /* Darker color on hover */
 }

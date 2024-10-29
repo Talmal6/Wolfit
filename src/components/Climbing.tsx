@@ -2,7 +2,25 @@ import React, { useState } from 'react';
 import './OptionsChooser.css';
 import Stopwatch from './Stopwatch';
 
-
+// API Function to start the game
+const startGameAPI = async (players: string[]) => {
+  try {
+    const response = await fetch('http://localhost:5173/api/start-game', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ players }),
+    });
+    if (!response.ok) {
+      throw new Error('Failed to start game');
+      alert('error: ' + response);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error starting game:', error);
+  }
+};
 
 const Climbing: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>('');
@@ -27,25 +45,26 @@ const Climbing: React.FC = () => {
     setNamesSelected(updatedNames); // Update the state with the new name
   };
 
-  // Handle submission of the names
-  const handleNamesButtonClick = () => {
-    // Redirect to another page with the names as query parameters
-    const queryParams = new URLSearchParams();
-    namesSelected.forEach((name, index) => {
-      queryParams.append(`name${index + 1}`, name);
-    });
-    setReadyToPlay(true);
+  // Handle submission of the names and start the game via API
+  const handleNamesButtonClick = async () => {
+    // Start the game by calling the API
+    const result = await startGameAPI(namesSelected);
+    if (result) {
+      setReadyToPlay(true); // Only set this if the API call was successful
+    }
+    else{
+      alert('error: ' + result);
+    }
   };
 
   return (
     <div className="container">
       {ReadyToPlay ? 
-         <Stopwatch names = {namesSelected}/>
+         <Stopwatch names={namesSelected} /> 
       
       : OptionSelected ? (
           <div className="TextInsertion">
             <h1>הכנס את שמות המשתתפים</h1>
-            {/* Dynamically create input fields based on the selected number of users */}
             {Array.from({ length: parseInt(selectedOption) }, (_, index) => (
               <div key={index} style={{ marginBottom: '10px' }}>
                 <input

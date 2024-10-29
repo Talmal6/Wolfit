@@ -1,27 +1,30 @@
-
 import { BluetoothButton } from "./BluetoothButton";
-
+import { Device } from "./Device";
 
 export class DeviceManager {
+    // Private static instance of DeviceManager
+    private static instance: DeviceManager;
+
+    // Private property to hold devices
+    private devices: Device[] = [];
+
     // Private constructor prevents instantiation
     private constructor() {}
 
-    // Static property
-    private static BluetoothButtons: BluetoothButton[] = [];
-
-    // Static method to initialize Bluetooth buttons
-    static init(): void {
-
-         DeviceManager.BluetoothButtons = [new BluetoothButton("1"), new BluetoothButton("2")];
+    // Static method to get the singleton instance
+    static getInstance(): DeviceManager {
+        if (!DeviceManager.instance) {
+            DeviceManager.instance = new DeviceManager();
+        }
+        return DeviceManager.instance;
     }
 
-    // Static method to get all buttons
-    static getButtons(): BluetoothButton[] {
-        return this.BluetoothButtons;
+    registerBlueToothButton(name: string): void {
+        this.devices.push(new BluetoothButton(name));
     }
 
-    // Static method to count buttons
-    static countButtons(): number {
-        return this.BluetoothButtons.length;
+    // Method to get all buttons
+    getDevices(): Device[] {
+        return this.devices;
     }
 }

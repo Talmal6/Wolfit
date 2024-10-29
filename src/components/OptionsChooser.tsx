@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './OptionsChooser.css'; // Import the CSS file
+
 import Climbing from './Climbing'; // Import the Climbing component
 
 const OptionsChooser: React.FC = () => {
